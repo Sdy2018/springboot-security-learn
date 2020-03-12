@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div sec:authorize="!isAuthenticated()">
+		<a th:href="@{/userLogin}">登录</a>
+	</div>
+	<div sec:authorize="isAuthenticated()">
+		<a th:href="@{/logout}">退出</a>
+		<span sec:authentication="name" ></span>
+		<span sec:authentication="principal.authorities"></span>
+	</div>
+	<div style="display: flex;">
+		<div  sec:authorize="hasAuthority('add')" style="height: 200px;width: 33%;border: 1px solid black;">
+			<a href="page1">add</a>
+		</div>
+		<div sec:authorize="hasRole('user1')" style="height: 200px;width: 33%;border: 1px solid black;">
+			<span>user1</span>
+		</div>
+		<div sec:authorize="hasRole('user2')" style="height: 200px;width: 33%;border: 1px solid black;">
+			<a href="page2">page2</a>
+		</div>
+		<div sec:authorize="hasRole('user3')" style="height: 200px;width: 33%;border: 1px solid black;">
+			<a href="page3">page3</a>
+		</div>
+
+	</div>
+</body>
+</html>

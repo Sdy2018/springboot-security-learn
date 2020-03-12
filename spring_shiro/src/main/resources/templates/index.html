@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <html>首页</html>
+    <div th:if="${session.loginUser==null}">
+        <a th:href="@{/login}">登录</a>
+    </div>
+    <div th:if="${session.loginUser!=null}">
+        <a th:href="@{/logout}">注销</a>
+    </div>
+    <hr>
+    <a th:href="@{/user/add}">add</a>
+    <a th:href="@{/user/update}">update</a>
+</body>
+</html>
